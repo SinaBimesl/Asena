@@ -7,7 +7,7 @@ app = QtWidgets.QApplication(sys.argv)
 
 window = uic.loadUi("dns_ui.ui")
 
-# رویداد دکمه Show Current DNS
+
 def on_show_current_dns():
     current_dns = show_current_dns()
     # اگر لیست بود، به رشته تبدیل می‌کنیم
