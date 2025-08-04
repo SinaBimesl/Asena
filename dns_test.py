@@ -10,18 +10,17 @@ def dns_ping(name):
         with open(f'{path}' , 'r',encoding='utf-8') as file:
             presets = json.load(file)
         
-        
         for server, dns in presets.items():
             if name == server:
                 test = dns[0]
                 command = (f"ping -c 4 {test}")
                 dns_test = os.system(command)
-                test_list = dns_test
-                return test_list
+                ping_result = dns_test
+                return ping_result
     except Exception as err:
         handle_error(err)
         return None
                     
     
-sina = dns_ping("kir")
+sina = dns_ping("google")
 print(sina)
