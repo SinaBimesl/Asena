@@ -1,5 +1,6 @@
 from dns_manager import show_current_dns, change_dns, reset_dns
 from presets_manager import show_presets, add_preset, remove_preset, use_preset
+from dns_test import dns_ping
 
 RESET = "\033[0m"
 BOLD = "\033[1m"
@@ -19,6 +20,7 @@ def menu():
         print(f"{YELLOW}5{RESET}- Add preset")
         print(f"{YELLOW}6{RESET}- Remove preset")
         print(f"{YELLOW}7{RESET}- Use preset")
+        print(f"{YELLOW}8{RESET}- Test DNS")
         print(f"{RED}0{RESET}- Exit")
 
         choice = input(f"{BOLD}Enter your choice: {RESET}").strip()
@@ -56,6 +58,9 @@ def menu():
         elif choice == "7":
             name = input("Enter preset name to use: ").strip()
             print(use_preset(name))
+            
+        elif choice == "8":
+            pass
 
         elif choice == "0":
             print(f"{RED}Exiting...{RESET}")
