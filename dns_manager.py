@@ -5,9 +5,10 @@ path = os.path.join(os.path.dirname(__file__), "server_list.JSON")
 
 def show_current_dns():
     """
-    Show Current DNS server from /etc/resolv.conf
-    __________
-    Return nameserver's value
+    Get the current DNS configuration from the system.
+
+    Returns:
+        list: A list of current DNS IP addresses
     """
     try:
         dns_list = []
@@ -23,7 +24,7 @@ def show_current_dns():
 
 def reset_dns():
     """
-    Reset DNS server from /etc/resolv.conf
+    Reset the system DNS to its default configuration.
     __
     defualt value: nameserver 192.168.1.1
     ___
@@ -42,9 +43,7 @@ def reset_dns():
     
 def change_dns(dns1 , dns2=None):
     """
-    Change content of /etc/resolv.conf
-    ______
-    dns2 parameter is unnecessary, Defualt is None.
+    Set the system DNS to the provided IP addresses
     """
     try:
         messages = []
