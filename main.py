@@ -12,7 +12,7 @@ CYAN = "\033[36m"
 
 def menu():
     """
-    Cli menu
+    Command-line interface.
     """
     while True:
         print(f"\n{BOLD}{CYAN}=== DNS Tool Menu ==={RESET}")
