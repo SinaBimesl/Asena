@@ -5,7 +5,11 @@ from error_handler import handle_error
 path = os.path.join(os.path.dirname(__file__), "server_list.JSON")
 
 def find_fastest_dns():
-    
+    """
+    Find the fastest DNS server from a list defined in `server_list.JSON` by measuring average ping time.
+    ____
+    Pings each IP address 4 times using the `ping` command.
+    """
     try:
         with open(path, 'r', encoding='utf-8') as file:
             presets = json.load(file)
@@ -41,6 +45,3 @@ def find_fastest_dns():
         return None
 
 
-
-if __name__ == "__main__":
-    print(find_fastest_dns())
