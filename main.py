@@ -11,6 +11,9 @@ BLUE = "\033[34m"
 CYAN = "\033[36m"
 
 def menu():
+    """
+    Cli menu
+    """
     while True:
         print(f"\n{BOLD}{CYAN}=== DNS Tool Menu ==={RESET}")
         print(f"{YELLOW}1{RESET}- Show current DNS")
