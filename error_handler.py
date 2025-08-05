@@ -2,7 +2,10 @@ import json
 
 def handle_error(error):
     """
-    Just For error Handling
+    Handle and log errors that occur in the program.
+
+    Args:
+        err (Exception): The exception object to handle.
     """
     if isinstance(error, PermissionError):
         print("Error: You need root privileges to do this action.")
