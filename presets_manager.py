@@ -7,7 +7,7 @@ path = os.path.join(os.path.dirname(__file__), "server_list.JSON")
 
 def show_presets():
     """
-    Reads the preset DNS list and returns it as a list of strings.
+    List all saved DNS presets in sever_list.JSON
     """
     try:
         with open(f'{path}' , 'r',encoding='utf-8') as file:
@@ -53,7 +53,7 @@ def remove_preset(name):
         
 def add_preset(name, primary, secondary = None):
     """
-    Add new DNS preset and returns a status message.
+    Add a new DNS preset to the presets list
     """
     
     try:
@@ -75,7 +75,7 @@ def add_preset(name, primary, secondary = None):
         
 def use_preset(name):
     """
-    apply a preset with name parameter in server_list.JSON file
+    Apply a saved DNS preset by its name
     """
     try:
         with open (f'{path}' , "r" , encoding = "utf-8") as file:
