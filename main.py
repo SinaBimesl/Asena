@@ -1,6 +1,6 @@
 from dns_manager import show_current_dns, change_dns, reset_dns
 from presets_manager import show_presets, add_preset, remove_preset, use_preset
-from dns_test import dns_ping
+from dns_test import find_fastest_dns
 
 RESET = "\033[0m"
 BOLD = "\033[1m"
@@ -60,7 +60,8 @@ def menu():
             print(use_preset(name))
             
         elif choice == "8":
-            pass
+            result = find_fastest_dns()
+            print(result)
 
         elif choice == "0":
             print(f"{RED}Exiting...{RESET}")
