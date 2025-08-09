@@ -25,9 +25,9 @@ def menu():
         print(f"{YELLOW}6{RESET}- Remove preset")
         print(f"{YELLOW}7{RESET}- Use preset")
         print(f"{YELLOW}8{RESET}- Test DNS Servers")
-        print(f"{YELLOW}9{RESET}- Dnscrypt Enable")
-        print(f"{YELLOW}10{RESET}- Dnscrypt Disable")
-        print(f"{YELLOW}11{RESET}- Dnscrypt Status")
+        print(f"{YELLOW}9{RESET}- DNSCrypt Enable")
+        print(f"{YELLOW}10{RESET}- DNSCrypt Disable")
+        print(f"{YELLOW}11{RESET}- DNSCrypt Status")
         print(f"{RED}0{RESET}- Exit")
 
         choice = input(f"{BOLD}Enter your choice: {RESET}").strip()
