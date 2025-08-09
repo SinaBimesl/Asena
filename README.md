@@ -56,7 +56,7 @@ git clone https://github.com/SinaBimesl/Asena.git
 cd ~/Asena
 python3 main.py
 
-**run with super user for all feature
+#run with super user for all feature
 ```
 
 Common flows:
