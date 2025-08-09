@@ -1,6 +1,7 @@
 from dns_manager import show_current_dns, change_dns, reset_dns
 from presets_manager import show_presets, add_preset, remove_preset, use_preset
 from dns_test import find_fastest_dns
+from dnscrypt import start_dnscrypt , is_running , stop_dnscrypt
 
 RESET = "\033[0m"
 BOLD = "\033[1m"
@@ -23,7 +24,10 @@ def menu():
         print(f"{YELLOW}5{RESET}- Add preset")
         print(f"{YELLOW}6{RESET}- Remove preset")
         print(f"{YELLOW}7{RESET}- Use preset")
-        print(f"{YELLOW}8{RESET}- Test DNS")
+        print(f"{YELLOW}8{RESET}- Test DNS Servers")
+        print(f"{YELLOW}9{RESET}- Dnscrypt Enable")
+        print(f"{YELLOW}10{RESET}- Dnscrypt Disable")
+        print(f"{YELLOW}11{RESET}- Dnscrypt Status")
         print(f"{RED}0{RESET}- Exit")
 
         choice = input(f"{BOLD}Enter your choice: {RESET}").strip()
@@ -65,6 +69,18 @@ def menu():
         elif choice == "8":
             result = find_fastest_dns()
             print(result)
+        
+        elif choice == "9":
+            ok = start_dnscrypt()
+            print("Done." if ok else "Failed.")
+            
+        elif choice == "10":
+            ok = stop_dnscrypt(restore_dns=True)
+            print("Stopped." if ok else "Failed.")
+            
+        elif choice == "10":
+            
+            print("DNSCrypt is running." if is_running() else "DNSCrypt is not running.")
 
         elif choice == "0":
             print(f"{RED}Exiting...{RESET}")
