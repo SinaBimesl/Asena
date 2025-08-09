@@ -78,7 +78,7 @@ def menu():
             ok = stop_dnscrypt(restore_dns=True)
             print("Stopped." if ok else "Failed.")
             
-        elif choice == "10":
+        elif choice == "11":
             
             print("DNSCrypt is running." if is_running() else "DNSCrypt is not running.")
 
