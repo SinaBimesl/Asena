@@ -1,5 +1,6 @@
 import json
 
+
 def handle_error(error):
     """
     Handle and log errors that occur in the program.
@@ -17,4 +18,7 @@ def handle_error(error):
         print("Error: Invalid Value.")
     else:
         print(f"Unexpected error: {error}")
-  
+
+
+if __name__ == "__main__":
+    print("This is module!!!")

@@ -4,7 +4,8 @@ from error_handler import handle_error
 
 CONFIG_PATH = "/etc/dnscrypt-proxy/dnscrypt-proxy.toml"
 LISTEN_IP = "127.0.0.1"
-LISTEN_PORT = 53 ##Change it in systmd (maybe)
+LISTEN_PORT = 53  ##Change it in systmd (maybe)
+
 
 def is_installed():
     """
@@ -12,12 +13,14 @@ def is_installed():
     """
     return shutil.which("dnscrypt-proxy") is not None and os.path.isfile(CONFIG_PATH)
 
+
 def is_running():
     """
     Return True if dnscrypt-proxy is already running.
     """
     result = subprocess.run(["pgrep", "-x", "dnscrypt-proxy"], stdout=subprocess.PIPE)
     return result.returncode == 0
+
 
 def wait_ready(timeout=5):
     """
@@ -27,9 +30,18 @@ def wait_ready(timeout=5):
         start = time.time()
         while time.time() - start < timeout:
             r = subprocess.run(
-                ["dig", f"@{LISTEN_IP}", "-p", str(LISTEN_PORT),
-                 "example.com", "+time=1", "+tries=1"],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+                [
+                    "dig",
+                    f"@{LISTEN_IP}",
+                    "-p",
+                    str(LISTEN_PORT),
+                    "example.com",
+                    "+time=1",
+                    "+tries=1",
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
             )
             if r.returncode == 0 and "ANSWER SECTION" in r.stdout:
                 return True
@@ -38,6 +50,7 @@ def wait_ready(timeout=5):
     else:
         time.sleep(min(timeout, 2))
         return True
+
 
 def start_dnscrypt():
     """
@@ -52,7 +65,8 @@ def start_dnscrypt():
             try:
                 subprocess.Popen(
                     ["dnscrypt-proxy", "-config", CONFIG_PATH],
-                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                 )
                 print("dnscrypt-proxy started. Waiting for readiness …")
             except Exception as e:
@@ -77,6 +91,7 @@ def start_dnscrypt():
         handle_error(e)
         return False
 
+
 def stop_dnscrypt(restore_dns=True):
     """
     Stop dnscrypt-proxy and optionally restore system DNS (reset_dns)
@@ -93,3 +108,7 @@ def stop_dnscrypt(restore_dns=True):
     except Exception as e:
         handle_error(e)
         return False
+
+
+if __name__ == "__main__":
+    print("This is module!!!")

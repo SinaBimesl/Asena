@@ -1,7 +1,7 @@
 from dns_manager import show_current_dns, change_dns, reset_dns
 from presets_manager import show_presets, add_preset, remove_preset, use_preset
 from dns_test import find_fastest_dns
-from dnscrypt import start_dnscrypt , is_running , stop_dnscrypt
+from dnscrypt import start_dnscrypt, is_running, stop_dnscrypt
 
 RESET = "\033[0m"
 BOLD = "\033[1m"
@@ -10,6 +10,7 @@ GREEN = "\033[32m"
 YELLOW = "\033[33m"
 BLUE = "\033[34m"
 CYAN = "\033[36m"
+
 
 def menu():
     """
@@ -65,22 +66,24 @@ def menu():
         elif choice == "7":
             name = input("Enter preset name to use: ").strip()
             print(use_preset(name))
-            
+
         elif choice == "8":
             result = find_fastest_dns()
             print(result)
-        
+
         elif choice == "9":
             ok = start_dnscrypt()
             print("Done." if ok else "Failed.")
-            
+
         elif choice == "10":
             ok = stop_dnscrypt(restore_dns=True)
             print("Stopped." if ok else "Failed.")
-            
+
         elif choice == "11":
-            
-            print("DNSCrypt is running." if is_running() else "DNSCrypt is not running.")
+
+            print(
+                "DNSCrypt is running." if is_running() else "DNSCrypt is not running."
+            )
 
         elif choice == "0":
             print(f"{RED}Exiting...{RESET}")
@@ -89,11 +92,6 @@ def menu():
         else:
             print(f"{RED}Invalid choice, try again.{RESET}")
 
+
 if __name__ == "__main__":
     menu()
-
-
-
-
-
-
